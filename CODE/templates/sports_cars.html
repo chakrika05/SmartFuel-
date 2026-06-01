@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block title %}Sports Cars{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-center text-danger mb-4">🏎️ Top Performance Sports Cars</h2>
+  <div class="row">
+    {% set cars = [
+  {
+    "name": "Chevrolet Corvette",
+    "image": url_for('static', filename='Chevrolet Corvette.png'),
+    "efficiency": "9.4 km/L",
+    "co2": "240 g/km",
+    "weight": "1530 kg"
+  },
+  {
+    "name": "Porsche 911 Carrera",
+    "image": url_for('static', filename='Porsche 911 Carrera.png'),
+    "efficiency": "10.1 km/L",
+    "co2": "220 g/km",
+    "weight": "1500 kg"
+  },
+  {
+    "name": "Ford Mustang GT",
+    "image": url_for('static', filename='Ford Mustang GT.png'),
+    "efficiency": "8.0 km/L",
+    "co2": "275 g/km",
+    "weight": "1655 kg"
+  },
+  {
+    "name": "BMW M4",
+    "image": url_for('static', filename='BMW M4.png'),
+    "efficiency": "9.2 km/L",
+    "co2": "235 g/km",
+    "weight": "1700 kg"
+  },
+  {
+    "name": "Audi R8",
+    "image": url_for('static', filename='Audi R8.png'),
+    "efficiency": "7.1 km/L",
+    "co2": "300 g/km",
+    "weight": "1595 kg"
+  },
+  {
+    "name": "Mercedes-AMG GT",
+    "image": url_for('static', filename='Mercedes-AMG GT.png'),
+    "efficiency": "8.5 km/L",
+    "co2": "270 g/km",
+    "weight": "1645 kg"
+  },
+  {
+    "name": "Nissan GT-R",
+    "image": url_for('static', filename='Nissan GT-R.png'),
+    "efficiency": "8.6 km/L",
+    "co2": "265 g/km",
+    "weight": "1750 kg"
+  },
+  {
+    "name": "Jaguar F-Type",
+    "image": url_for('static', filename='Jaguar F-Type.png'),
+    "efficiency": "9.0 km/L",
+    "co2": "250 g/km",
+    "weight": "1600 kg"
+  },
+  {
+    "name": "Lexus RC F",
+    "image": url_for('static', filename='Lexus RC F.png'),
+    "efficiency": "8.3 km/L",
+    "co2": "260 g/km",
+    "weight": "1800 kg"
+  },
+  {
+    "name": "Dodge Challenger SRT",
+    "image": url_for('static', filename='Dodge Challenger SRT.png'),
+    "efficiency": "6.7 km/L",
+    "co2": "320 g/km",
+    "weight": "1920 kg"
+  }
+] %}
+
+    
+    {% for car in cars %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{{ car.image }}" class="card-img-top" alt="{{ car.name }}" style="height: 200px; object-fit: cover;" />
+        <div class="card-body">
+          <h5 class="card-title">{{ car.name }}</h5>
+          <p class="card-text">
+  <strong>Fuel Efficiency:</strong> {{ car.efficiency }}<br>
+  <strong>CO₂ Emissions:</strong> {{ car.co2 }}<br>
+  <strong>Weight:</strong> {{ car.weight }}
+</p>
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

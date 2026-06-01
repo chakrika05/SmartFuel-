@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block title %}Family Cars{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-center text-info mb-4">🚐 Top Family-Friendly Cars</h2>
+  <div class="row">
+    {% set cars = [
+  {
+    "name": "Toyota Sienna Hybrid",
+    "image": url_for('static', filename='Toyota Sienna Hybrid.png'),
+    "efficiency": "14.5 km/L",
+    "co2": "140 g/km",
+    "weight": "2100 kg"
+  },
+  {
+    "name": "Honda Odyssey",
+    "image": url_for('static', filename='honda odyssey.png'),
+    "efficiency": "10.9 km/L",
+    "co2": "180 g/km",
+    "weight": "2035 kg"
+  },
+  {
+    "name": "Kia Carnival",
+    "image": url_for('static', filename='Kia Carnival.png'),
+    "efficiency": "11.2 km/L",
+    "co2": "190 g/km",
+    "weight": "2110 kg"
+  },
+  {
+    "name": "Chrysler Pacifica Hybrid",
+    "image": url_for('static', filename='Chrysler Pacifica Hybrid.png'),
+    "efficiency": "12.3 km/L",
+    "co2": "160 g/km",
+    "weight": "2190 kg"
+  },
+  {
+    "name": "Subaru Ascent",
+    "image": url_for('static', filename='Subaru Ascent.png'),
+    "efficiency": "9.8 km/L",
+    "co2": "210 g/km",
+    "weight": "2000 kg"
+  },
+  {
+    "name": "Hyundai Palisade",
+    "image": url_for('static', filename='Hyundai Palisade.png'),
+    "efficiency": "10.1 km/L",
+    "co2": "200 g/km",
+    "weight": "1990 kg"
+  },
+  {
+    "name": "Mazda CX-9",
+    "image": url_for('static', filename='Mazda CX-9.png'),
+    "efficiency": "10.5 km/L",
+    "co2": "185 g/km",
+    "weight": "1925 kg"
+  },
+  {
+    "name": "Ford Explorer",
+    "image": url_for('static', filename='Ford Explorer.png'),
+    "efficiency": "9.4 km/L",
+    "co2": "215 g/km",
+    "weight": "2040 kg"
+  },
+  {
+    "name": "Volkswagen Atlas",
+    "image": url_for('static', filename='Volkswagen Atlas.png'),
+    "efficiency": "10.0 km/L",
+    "co2": "190 g/km",
+    "weight": "2085 kg"
+  },
+  {
+    "name": "Nissan Pathfinder",
+    "image": url_for('static', filename='Nissan Pathfinder.png'),
+    "efficiency": "9.9 km/L",
+    "co2": "200 g/km",
+    "weight": "2060 kg"
+  }
+] %}
+
+    
+    {% for car in cars %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{{ car.image }}" class="card-img-top" alt="{{ car.name }}" style="height: 200px; object-fit: cover;" />
+        <div class="card-body">
+          <h5 class="card-title">{{ car.name }}</h5>
+          <p class="card-text">
+  <strong>Fuel Efficiency:</strong> {{ car.efficiency }}<br>
+  <strong>CO₂ Emissions:</strong> {{ car.co2 }}<br>
+  <strong>Weight:</strong> {{ car.weight }}
+</p>
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

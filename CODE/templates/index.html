@@ -1,0 +1,99 @@
+<!-- templates/index.html -->
+{% extends "layout.html" %}
+
+{% block title %}Fuel Advisor{% endblock %}
+
+{% block content %}
+<div class="card shadow-lg p-5">
+  <h2 class="text-center mb-4 text-primary">
+    <span class="emoji">⛽</span>Fuel Consumption Advisor<span class="emoji">🚗</span>
+  </h2>
+
+  <form action="{{ url_for('predict') }}" method="POST">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Engine Size (L)</label>
+        <input type="text" class="form-control" name="engine_size" value="{{ request.form.get('engine_size', '') }}" required />
+      </div>
+      <div class="form-group col-md-6">
+        <label>Cylinders</label>
+        <input type="number" class="form-control" name="cylinders" value="{{ request.form.get('cylinders', '') }}" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Car Brand (Make)</label>
+        <select name="make" class="form-control" required>
+          {% for make in makes %}
+            <option value="{{ make }}" {% if request.form.get('make') == make %}selected{% endif %}>{{ make }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Fuel Type</label>
+        <select name="fuel_type" class="form-control" required>
+          {% for fuel in fuels %}
+            <option value="{{ fuel }}" {% if request.form.get('fuel_type') == fuel %}selected{% endif %}>{{ fuel }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Distance per Month (km)</label>
+        <input type="number" class="form-control" name="distance_per_month" placeholder="e.g. 1000" value="{{ request.form.get('distance_per_month', '') }}" required />
+      </div>
+      <div class="form-group col-md-6">
+        <label>Fuel Price (per litre)</label>
+        <input type="number" step="0.01" class="form-control" name="price_per_litre" placeholder="e.g. 105.50" value="{{ request.form.get('price_per_litre', '') }}" required />
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary btn-lg px-4 mt-3">🚀 Predict</button>
+    </div>
+  </form>
+
+  {% if co2 %}
+    <div class="mt-5 alert alert-info">
+      <h4>🔍 Prediction Results:</h4>
+      <p><strong>Estimated CO₂ Emissions:</strong> {{ co2 }} g/km 💨</p>
+      <p><strong>Estimated Fuel Consumption:</strong> {{ fuel }} L/100km ⛽</p>
+      <p><strong>Estimated Efficiency:</strong> {{ efficiency }} km/L 🚗</p>
+    </div>
+
+    {% if comparison %}
+      <div class="highlight">
+        <h5>📊 Comparison:</h5>
+        <p>Your CO₂ emission is <strong>{{ comparison.co2_diff_percent }}%</strong> {{ comparison.co2_comment }} than average for similar cars.</p>
+        <p>Your fuel consumption is <strong>{{ comparison.fuel_diff_percent }}%</strong> {{ comparison.fuel_comment }} than average for similar cars.</p>
+      </div>
+    {% endif %}
+
+    {% if better_car %}
+      <div class="highlight">
+        <h5>🌱 Greener Alternative:</h5>
+        <p>💡 Consider the <strong>{{ better_car.Make }}</strong> with <strong>{{ better_car.Engine_Size }}L</strong> engine and {{ better_car.Cylinders }} cylinders.</p>
+        <p>It uses <strong>{{ better_car.Fuel_Consumption }} L/100km</strong>.</p>
+      </div>
+    {% endif %}
+
+    {% if monthly_cost and annual_co2 %}
+      <div class="highlight">
+        <h5>💸 Real-World Cost & Impact:</h5>
+        <p><strong>Monthly Fuel Cost:</strong> ₹{{ monthly_cost }}</p>
+        <p><strong>Annual CO₂ Emissions:</strong> {{ annual_co2 }} tons 🌍</p>
+      </div>
+    {% endif %}
+
+    {% if tip %}
+      <div class="highlight">
+        <h5>💡 Eco Tip:</h5>
+        <p>{{ tip }}</p>
+      </div>
+    {% endif %}
+  {% endif %}
+</div>
+{% endblock %}

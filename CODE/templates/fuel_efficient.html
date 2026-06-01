@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block title %}Fuel Efficient Cars{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h1 class="text-center text-success mb-4">⛽ Most Fuel-Efficient Cars</h1>
+  <div class="row">
+   {% set cars = [
+  {
+    "name": "Toyota Corolla Hybrid",
+    "image": url_for('static', filename='Toyota Corolla Hybrid.png'),
+    "efficiency": "23.9 km/L",
+    "co2": "76 g/km",
+    "weight": "1380 kg"
+  },
+  {
+    "name": "Hyundai Elantra Hybrid",
+    "image": url_for('static', filename='Hyundai Elantra Hybrid.png'),
+    "efficiency": "22.7 km/L",
+    "co2": "80 g/km",
+    "weight": "1345 kg"
+  },
+  {
+    "name": "Ford Fusion Hybrid",
+    "image": url_for('static', filename='Ford Fusion Hybrid.png'),
+    "efficiency": "20.8 km/L",
+    "co2": "88 g/km",
+    "weight": "1580 kg"
+  },
+  {
+    "name": "Honda Insight",
+    "image": url_for('static', filename='Honda Insight.png'),
+    "efficiency": "22.4 km/L",
+    "co2": "85 g/km",
+    "weight": "1320 kg"
+  },
+  {
+    "name": "Toyota Prius",
+    "image": url_for('static', filename='Toyota Prius.png'),
+    "efficiency": "25.0 km/L",
+    "co2": "70 g/km",
+    "weight": "1370 kg"
+  },
+  {
+    "name": "Kia Niro Hybrid",
+    "image": url_for('static', filename='Kia Niro Hybrid.png'),
+    "efficiency": "22.0 km/L",
+    "co2": "82 g/km",
+    "weight": "1395 kg"
+  },
+  {
+    "name": "Hyundai Ioniq Hybrid",
+    "image": url_for('static', filename='Hyundai Ioniq Hybrid.png'),
+    "efficiency": "24.5 km/L",
+    "co2": "74 g/km",
+    "weight": "1290 kg"
+  },
+  {
+    "name": "Lexus UX 250h",
+    "image": url_for('static', filename='Lexus UX 250h.png'),
+    "efficiency": "18.9 km/L",
+    "co2": "98 g/km",
+    "weight": "1520 kg"
+  },
+  {
+    "name": "Chevrolet Malibu Hybrid",
+    "image": url_for('static', filename='Chevrolet Malibu Hybrid.png'),
+    "efficiency": "20.5 km/L",
+    "co2": "90 g/km",
+    "weight": "1510 kg"
+  },
+  {
+    "name": "Volkswagen Jetta Hybrid",
+    "image": url_for('static', filename='Volkswagen Jetta Hybrid.png'),
+    "efficiency": "21.7 km/L",
+    "co2": "84 g/km",
+    "weight": "1450 kg"
+  }
+] %}
+
+
+    
+    {% for car in cars %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card h-100 shadow">
+        <img src="{{ car.image }}" class="card-img-top" alt="{{ car.name }}" style="height: 200px; object-fit: cover;" />
+        <div class="card-body">
+          <h5 class="card-title">{{ car.name }}</h5>
+          <p class="card-text">
+  <strong>Fuel Efficiency:</strong> {{ car.efficiency }}<br>
+  <strong>CO₂ Emissions:</strong> {{ car.co2 }}<br>
+  <strong>Weight:</strong> {{ car.weight }}
+</p>
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

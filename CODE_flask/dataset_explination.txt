@@ -1,0 +1,72 @@
+---
+# Metadata:
+---    
+1. Dataset  : Given dataset contain 2022 Fuel Consumption Ratings information.
+
+2. Model Year: Represent the year in which a particular model of a vehicle was produced. 
+
+3. Make: It describe the brand or manufacturer of a vehicle.
+
+4. Model: It refers to a specific version of a vehicle produced by a manufacturer under a particular make or brand.
+5. Vehicle Class: Represent the categorization system used in the automotive industry to group vehicles based on their size, body style, and intended use. 
+
+6. Engine Size: It tell us about the total volume of air and fuel that can be drawn into the engine cylinders of a vehicle's engine during one complete cycle. It is typically measured in either cubic centimeters (cc)                      or liters (L).
+
+7. Cylinders: It refer to the individual chambers within a vehicle's engine where the combustion process takes place.
+
+8. Transmission: It represent the system in which power transmission take place, from the engine to the wheels, which allowing the vehicle to move forward or backward
+
+9. Fuel Type: It refers to the specific type of fuel that is used to power a vehicle, machine, or other device. Z=  Premium gasoline | D=  Diesel | E=  Ethanol  |  X=Regular gasoline
+                   
+10. Fuel Consumption(City (L/100 km): it represent fuel consumption in the city.
+
+11. Fuel Consumption(Hwy (L/100 km): it represent fuel consumption on the Highway.
+
+12. Fuel Consumption(Comb (L/100 km): it represent fuel consumption for both city and highway.
+
+13. Fuel Consumption(Comb (mpg)): it represent fuel consumption for both city & highway, in miles per imperial gallon(mpg).
+
+14. CO2 Emissions(g/km): It refer to the amount of CO2 that is emitted by a vehicle for every kilometer that it is driven.
+
+15. CO2 Rating: It's measure a vehicle's carbon dioxide (CO2) emissions, typically expressed in grams of CO2 per kilometer(g/km).
+16. Smog Rating: It's measure a vehicle's emissions of pollutants that contribute to the formation of smog. 
+
+
+
+
+
+
+Import Modules
+1.1 Importing data into Dataframe
+
+Data cleaning
+2.1 Creating new DataFrame with necessary columns
+2.2 Checking null values
+2.3 Treating Null's in "Fuel type"
+2.4 Dealing with the nulls present in feature "CO2 Rating"
+
+# Exploratory Data Analysis (E.D.A.)
+
+Univariate analysis:-
+3.1 Checking Mean, Median, Standard Deviation and Quantile
+3.2 Frequency Distribution for the categorical Columns
+3.3 Frequency Distribution on Numerical columns
+
+Bivariate analysis:-
+4.1 Comparison Between all columns
+4.2 Comparison between "No. of cylinders" & "Fuel consumption"
+4.3 Performing Chi Square analysis
+4.4 Heatmap showing "Pearson correlation"
+
+Data Preprocessing
+5.1 Outlier analysis
+5.2 Ordinal encoding
+5.3 One Hot encoding on categorical columns
+5.4 Split into train and test set
+5.5 Feature Scaling
+Training Models
+6.1 Linear Regression
+6.2 Decision Tree Regressor
+6.3 Random Forest Regressor
+Model Deployment
+7.1 Pickling Model and Scaler object for Deployment
